@@ -1,0 +1,191 @@
+% TeX Package (Emo Mode)
+% On Linux:
+%   clone repo to ~/texmf-git/
+%   in ~/texmf/tex/latex/local/:
+%   ln -s ~/texmf-git/kat.sty ./kat.sty
+%   symbolic link in default tex folder now points to repo version
+% Kat Matheson
+% % % % % % % % % % % % % %
+\NeedsTeXFormat{LaTeX2e}  % % % % %
+\ProvidesPackage{kat}[2024/11/21] % here
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[hmargin = 1in, vmargin = 1in]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumerate}
+
+% author's signature
+\raggedbottom
+
+% never understood the point of these, but you can put them in if you want
+\setlength{\parindent}{0pt}  % paragraph indentation
+\setlength{\parskip}{0pt}    % space between paragraphs
+
+% pretty math letters
+\newcommand{\bR}{\mathbb{R}} % real numbers
+\newcommand{\bQ}{\mathbb{Q}} % rationals
+\newcommand{\bQc}{\mathbb{Q}^c} % irrationals
+\newcommand{\bN}{\mathbb{N}} % natural numbers (1,2,3....)
+\newcommand{\bNo}{\mathbb{N}_0} % (0,1,2,..) \bNo \st o:char
+\newcommand{\bZ}{\mathbb{Z}} % integers
+\newcommand{\bP}{\mathbb{P}} % probability
+\newcommand{\bE}{\mathbb{E}} % expectation
+\newcommand{\bI}{\mathbb{I}} % Indicator Function
+\newcommand{\cA}{\mathcal{A}} % pretty A for set of sets
+\newcommand{\cS}{\mathcal{S}} % support
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cN}{\mathcal{N}}
+
+\newcommand{\xstar}{x^{\star}}
+\newcommand{\iid}{\overset{\texttt{iid}}{\sim}}
+\newcommand{\eqd}{\overset{\texttt{d}}{=}}
+\newcommand{\indep}{\perp \!\!\! \perp}
+% add your own if you want, i this is already quite a list
+\newcommand{\bX}{\mathbf{X}}
+
+% fancy proof ending
+\newcommand{\qed}{\hfill $\blacksquare$}
+
+% declare words in $math$ that look nice
+\DeclareMathOperator{\var}{Var} 
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmax}{argmax}
+
+% auto-sizing brackets
+% use inside math environments only
+% if only text needed, use $\bp{\text{...}}$ 
+\newcommand{\bp}[1]{\left( #1 \right)}
+\newcommand{\bb}[1]{\left[ #1 \right]}
+\newcommand{\bc}[1]{\left\{ #1 \right \}}
+\newcommand{\ba}[1]{\left| #1 \right|}
+\newcommand{\baa}[1]{\left|| #1 \right||}
+\newcommand{\baainf}[1]{\baa{#1}_{\infty}}
+
+
+% use these to make the .pdf background darker or another color
+% look at docs for colors or make your own:
+% \definecolor{string name}{RGB}{int r,b,g in [0,255]}
+\usepackage{xcolor}
+\definecolor{charcoal}{RGB}{1, 3, 2}
+\definecolor{paper}{RGB}{212, 212, 203}
+\definecolor{forest}{RGB}{6, 26, 2}
+\definecolor{strawberry}{RGB}{232, 70, 70}
+\definecolor{tinged}{RGB}{247, 244, 240}
+\definecolor{myblue}{RGB}{33, 97, 217}
+\definecolor{mygreen}{RGB}{16, 133, 47}
+
+\newcommand{\tred}[1]{\textcolor{strawberry}{#1}}
+\newcommand{\tgreen}[1]{\textcolor{mygreen}{#1}}
+\newcommand{\tblue}[1]{\textcolor{myblue}{#1}}
+
+\newcommand{\mypagecolor}{charcoal}
+\pagecolor{charcoal} %% background
+\color{tinged} %% font
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=strawberry,
+    % you could theoretically write notes that refer to themselves as links
+    filecolor=strawberry, 
+    urlcolor=strawberry,
+    citecolor=strawberry,
+    urlbordercolor=strawberry,
+    linkbordercolor=strawberry,
+    citebordercolor=strawberry
+}
+
+%%%% algoritms packages
+\usepackage{algorithm}
+% [noend] gets rid of lines like "end function"
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\textproc{} % function names not capslock
+\renewcommand{\thealgorithm}{} % removes algo numbering
+% for each command (\ForEach --> \EndFor)
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+\usepackage{fancyvrb}
+
+%% Figure example
+%\begin{figure}[h!]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{Q2a.png}
+%\end{figure}
+
+\usepackage{tikz}
+% Tree example
+% \begin{tikzpicture}
+%     [level distance = 10mm,
+%      level 1/.style={sibling distance=30mm},
+%      level 2/.style={sibling distance=15mm}]
+%         \node {K}
+%             child {node {H}
+%                         child {node {X}}
+%                         child {node {C}}        
+%             }
+%             child {node {R}
+%                 child{node {Q}
+%                                 child{node {M}
+%                                     child{node {A}
+%                                         child{node {Y}}
+%                                         child{node {S}}
+%                                     }
+%                                     child{node {W}}}
+%                                 child{node{D}}}
+%                             child{node {L}}
+%             };
+% \end{tikzpicture}
+
+% Graph (and array) example
+% \begin{figure}[h!] \centering
+%     \begin{minipage}[h!]{0.5\textwidth} \centering
+%         \begin{tikzpicture}[main/.style = {draw, circle}, node distance = {16mm}]
+%             \node[main, fill=strawberry, draw=\mypagecolor] (1) {$N$};
+%             \node[main] (2) [above left of=1] {$A$};
+%             \node[main] (3) [below left of=2] {$W$};
+%             \node[main] (4) [right of=1] {$D$};
+%             \node[main] (5) [below of=1] {$T$};
+%             \node[main] (6) [above right of=4] {$E$};
+%             \node[main] (7) [below right of=6] {$M$};
+%             \node[main] (8) [above right of=7] {$K$};
+
+%             \draw (1) -- node[midway, above, sloped] {8} (2);
+%             \draw (1) -- node[midway, above, sloped] {3} (3);
+%             \draw (1) -- node[midway, above, sloped] {1} (4);
+%             \draw (2) -- node[midway, above, sloped] {2} (3);
+%             \draw (3) -- node[midway, above, sloped] {5} (5);
+%             \draw (2) -- node[midway, above, sloped] {4} (6);
+%             \draw (4) -- node[midway, above, sloped] {4} (7);
+%             \draw (5) -- node[midway, above, sloped] {2} (7);
+%             \draw (6) -- node[midway, above, sloped] {3} (7);
+%             \draw (6) -- node[midway, above, sloped] {7} (8);
+%             \draw (7) -- node[midway, above, sloped] {9} (8);
+%         \end{tikzpicture}
+%     \end{minipage}
+%     \begin{minipage}[h!]{0.45\textwidth} \centering
+%     $\begin{array}{|c|c|}
+%         \texttt{Node} & \texttt{distance} \\
+%         \hline
+%         \texttt{D} & \infty \\
+%         \texttt{W} & \infty \\
+%         \texttt{A} & \infty \\
+%         \texttt{M} & \infty \\
+%         \texttt{T} & \infty \\
+%         \texttt{E} & \infty \\
+%         \texttt{K} & \infty
+%     \end{array}$
+%     \end{minipage} 
+% \end{figure}
