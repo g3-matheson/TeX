@@ -111,6 +111,16 @@
 \usepackage[noend]{algpseudocode}
 \algrenewcommand\textproc{} % function names not capslock
 \renewcommand{\thealgorithm}{} % removes algo numbering
+% do-while
+\newcommand{\StateH}{\State \hspace{\algorithmicindent}}
+\renewcommand{\algorithmicdo}{\textbf{do}}
+\newcommand{\algorithmicdowhile}{\textbf{while}}
+\newcommand{\Do}{%
+  \State \algorithmicdo%
+}
+\newcommand{\doWhile}[1]{%
+  \State \algorithmicdowhile\ (#1)%
+}
 % for each command (\ForEach --> \EndFor)
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
