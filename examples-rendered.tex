@@ -2,6 +2,7 @@
 \usepackage{kat}
 
 \begin{document}
+
 \begin{algorithm}
 \caption{Finding pairs $(i,j)$ such that $i \equiv j \mod x$}
     \begin{algorithmic}
@@ -24,7 +25,7 @@
     \Function{PowerSet}{$\texttt{int[]} T$}
         \State $\texttt{Queue<int[]>} \ q$							\Comment{declare queue}
         \State $q.queue(\texttt{[]})$								\Comment{start with $\emptyset$}
-\ForEach{$t \in T$} 						\Comment{$\forall \ t$, create new subsets by appending $t$ to all subsets}
+        \ForAll{$t \in T$} 						\Comment{$\forall \ t$, create new subsets by appending $t$ to all subsets}
             \While{$\texttt{true}$} 								\Comment{iterate through queue until $\emptyset$}
                 \State \texttt{int[]} $subset \gets q.deqeue()$
                 \State \texttt{int[]} $newSubset \gets subset.append(t)$ \Comment{append $t$ to subset}
@@ -38,6 +39,29 @@
         \EndFor
         \State \textbf{return} $q$
     \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Proposed Critical Section Resolution}
+    \begin{algorithmic}
+        \State bool \texttt{flag} [2] \Comment{Initially False} 
+        \State int \texttt{turn}; \Comment{Initilally 0}
+        \DoWhile
+            \State \texttt{flag}[i] = True \Comment{i \texttt{==} 0 for $P_0$ and 1 for $P_1$} 
+            \While{\texttt{flag}[1-i]}
+                \If{\texttt{turn} == j}
+                    \State \texttt{flag}[i] = False
+                    \While{\texttt{turn} == j} \LComment{\BoxedString[fill=forest]{Do nothing, just wait.}}
+                    \EndWhile
+                    \State \texttt{flag}[i] = True
+                \EndIf
+            \EndWhile
+            \LComment{\BoxedString[fill=algored]{Critical Section Code Here}}
+            \State \texttt{turn} = j;
+            \State \texttt{flag}[i] = False
+            \LComment{\BoxedString[fill=forest]{Rest of the Code Here}}
+        \DoWhileEnd{True}
     \end{algorithmic}
 \end{algorithm}
 
