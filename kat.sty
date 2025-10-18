@@ -108,19 +108,14 @@
 %%%% algoritms packages
 \usepackage{algorithm}
 % [noend] gets rid of lines like "end function"
-\usepackage[noend]{algpseudocode}
+\usepackage[noEnd]{algpseudocodex}
 \algrenewcommand\textproc{} % function names not capslock
 \renewcommand{\thealgorithm}{} % removes algo numbering
 % do-while
-\newcommand{\StateH}{\State \hspace{\algorithmicindent}}
-\renewcommand{\algorithmicdo}{\textbf{do}}
-\newcommand{\algorithmicdowhile}{\textbf{while}}
-\newcommand{\Do}{%
-  \State \algorithmicdo%
-}
-\newcommand{\doWhile}[1]{%
-  \State \algorithmicdowhile\ (#1)%
-}
+\renewcommand{\algorithmicrepeat}{\textbf{do}}
+\renewcommand{\algorithmicuntil}{\textbf{while}}
+\newcommand{\DoWhile}{\Repeat}
+\newcommand{\DoWhileEnd}{\Until}
 % for each command (\ForEach --> \EndFor)
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
