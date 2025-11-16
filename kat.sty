@@ -9,24 +9,40 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{kat}[2024/11/21]
 
-\usepackage{iftex}
+%%%% FONTS / SIZE
+\PassOptionsToClass{10pt, oneside}{article}
 
+\usepackage{iftex}
+\usepackage{fontspec}
+
+\newcommand{\iosevkaSize}{0.825}
+\newcommand{\textttSize}{9}
 \ifXeTeX
-    \usepackage{fontspec}
+
     \IfFontExistsTF{Iosevka Custom}
     {
-        \setmainfont{Iosevka Custom}[Scale=0.9]
+        \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
+        % Make \texttt slightly smaller globally
+        \usepackage{letltxmacro}
+        \LetLtxMacro{\oldtexttt}{\texttt}
+        \renewcommand{\texttt}[1]{{%
+            \oldtexttt{\fontsize{\textttSize}{10}\selectfont #1}}}
     }{}
 \fi
 
 \ifLuaTeX
-    \usepackage{fontspec}
     \IfFontExistsTF{Iosevka Custom}
     {
-        \setmainfont{Iosevka Custom}[Scale=0.9]
+        \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
+        % Make \texttt slightly smaller globally
+        \usepackage{letltxmacro}
+        \LetLtxMacro{\oldtexttt}{\texttt}
+        \renewcommand{\texttt}[1]{{%
+            \oldtexttt{\fontsize{\textttSize}{10}\selectfont #1}}}
     }{}
 \fi
 
+%%%%% PACKAGES
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
@@ -51,6 +67,7 @@
 \usepackage{enumerate}
 \usepackage{fancyvrb}
 \usepackage{multicol}
+
 
 % author's signature
 \raggedbottom
