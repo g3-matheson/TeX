@@ -7,7 +7,25 @@
 % Kat Matheson
 % % % % % % % % % % % % % %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{kat}[2024/11/21]  
+\ProvidesPackage{kat}[2024/11/21]
+
+\usepackage{iftex}
+
+\ifXeTeX
+    \usepackage{fontspec}
+    \IfFontExistsTF{Iosevka Custom}
+    {
+        \setmainfont{Iosevka Custom}[Scale=0.9]
+    }{}
+\fi
+
+\ifLuaTeX
+    \usepackage{fontspec}
+    \IfFontExistsTF{Iosevka Custom}
+    {
+        \setmainfont{Iosevka Custom}[Scale=0.9]
+    }{}
+\fi
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -33,7 +51,6 @@
 \usepackage{enumerate}
 \usepackage{fancyvrb}
 \usepackage{multicol}
-\usepackage{boisik}
 
 % author's signature
 \raggedbottom
@@ -78,7 +95,12 @@
 
 % math symbols
 \newcommand{\qed}{\hfill $\blacksquare$}
-\newcommand{\contradiction}{\smashtimes}
+\newcommand{\contradiction}{
+    {\raisebox{-0.1ex}{\scalebox{1.25}{\hbox{
+        \setbox0=\hbox{$\mkern-3mu{\times}\mkern-3mu$}
+        \setbox1=\hbox to0pt{\hss\copy0\hss}
+        \copy0\raisebox{0.5\wd0}{\copy1}\raisebox{-0.5\wd0}{\box1}\box0}}}}
+}
 
 % declare words in $math$ that look nice
 \DeclareMathOperator{\var}{Var} 
