@@ -14,31 +14,34 @@
 
 \usepackage{iftex}
 \usepackage{fontspec}
+\usepackage{letltxmacro}
+\LetLtxMacro{\oldtexttt}{\texttt}
+\LetLtxMacro{\oldLaTeX}{\LaTeX}
+\LetLtxMacro{\oldTeX}{\TeX}
+\newfontfamily{\latexlogo}{Latin Modern Roman}
 
 \newcommand{\iosevkaSize}{0.825}
 \newcommand{\textttSize}{9}
-\ifXeTeX
 
+\newcommand{\ChangeToIosevkaFont}{%
+    \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
+    \renewcommand{\texttt}[1]{%
+        \oldtexttt{\fontsize{\textttSize}{10}\selectfont ##1}}
+    \renewcommand{\LaTeX}{\latexlogo\oldLaTeX}
+    \renewcommand{\TeX}{\latexlogo\oldTeX}
+}
+
+\ifXeTeX
     \IfFontExistsTF{Iosevka Custom}
     {
-        \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
-        % Make \texttt slightly smaller globally
-        \usepackage{letltxmacro}
-        \LetLtxMacro{\oldtexttt}{\texttt}
-        \renewcommand{\texttt}[1]{{%
-            \oldtexttt{\fontsize{\textttSize}{10}\selectfont #1}}}
+        \ChangeToIosevkaFont
     }{}
 \fi
 
 \ifLuaTeX
     \IfFontExistsTF{Iosevka Custom}
     {
-        \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
-        % Make \texttt slightly smaller globally
-        \usepackage{letltxmacro}
-        \LetLtxMacro{\oldtexttt}{\texttt}
-        \renewcommand{\texttt}[1]{{%
-            \oldtexttt{\fontsize{\textttSize}{10}\selectfont #1}}}
+        \ChangeToIosevkaFont
     }{}
 \fi
 
