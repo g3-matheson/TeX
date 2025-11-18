@@ -13,12 +13,11 @@
 \PassOptionsToClass{10pt, oneside}{article}
 
 \usepackage{iftex}
-\usepackage{fontspec}
 \usepackage{letltxmacro}
 \LetLtxMacro{\oldtexttt}{\texttt}
 \LetLtxMacro{\oldLaTeX}{\LaTeX}
 \LetLtxMacro{\oldTeX}{\TeX}
-\newfontfamily{\latexlogo}{Latin Modern Roman}
+
 
 \newcommand{\iosevkaSize}{0.825}
 \newcommand{\textttSize}{9}
@@ -27,11 +26,13 @@
     \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
     \renewcommand{\texttt}[1]{%
         \oldtexttt{\fontsize{\textttSize}{10}\selectfont ##1}}
+    \newfontfamily{\latexlogo}{Latin Modern Roman}
     \renewcommand{\LaTeX}{\latexlogo\oldLaTeX}
     \renewcommand{\TeX}{\latexlogo\oldTeX}
 }
 
 \ifXeTeX
+    \usepackage{fontspec}
     \IfFontExistsTF{Iosevka Custom}
     {
         \ChangeToIosevkaFont
@@ -39,6 +40,7 @@
 \fi
 
 \ifLuaTeX
+    \usepackage{fontspec}
     \IfFontExistsTF{Iosevka Custom}
     {
         \ChangeToIosevkaFont
