@@ -23,28 +23,28 @@
 \newcommand{\textttSize}{9}
 
 \newcommand{\ChangeToIosevkaFont}{%
-    \setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
-    \renewcommand{\texttt}[1]{%
-        \oldtexttt{\fontsize{\textttSize}{10}\selectfont ##1}}
-    \newfontfamily{\latexlogo}{Latin Modern Roman}
-    \renewcommand{\LaTeX}{\latexlogo\oldLaTeX}
-    \renewcommand{\TeX}{\latexlogo\oldTeX}
+	\setmainfont{Iosevka Custom Light}[Scale=\iosevkaSize]
+	\renewcommand{\texttt}[1]{%
+		\oldtexttt{\fontsize{\textttSize}{10}\selectfont ##1}}
+	\newfontfamily{\latexlogo}{Latin Modern Roman}
+	\renewcommand{\LaTeX}{\latexlogo\oldLaTeX}
+	\renewcommand{\TeX}{\latexlogo\oldTeX}
 }
 
 \ifXeTeX
-    \usepackage{fontspec}
-    \IfFontExistsTF{Iosevka Custom}
-    {
-        \ChangeToIosevkaFont
-    }{}
+	\usepackage{fontspec}
+	\IfFontExistsTF{Iosevka Custom}
+	{
+		\ChangeToIosevkaFont
+	}{}
 \fi
 
 \ifLuaTeX
-    \usepackage{fontspec}
-    \IfFontExistsTF{Iosevka Custom}
-    {
-        \ChangeToIosevkaFont
-    }{}
+	\usepackage{fontspec}
+	\IfFontExistsTF{Iosevka Custom}
+	{
+		\ChangeToIosevkaFont
+	}{}
 \fi
 
 %%%%% PACKAGES
@@ -56,18 +56,18 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \lstset{
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{myblue}\bfseries,
-    stringstyle=\color{strawberry!80},
-    commentstyle=\color{forest!85}\itshape,
-    numbers=none,
-    numberstyle=\tiny,
-    stepnumber=1,
-    numbersep=5pt,
-    frame=single,
-    breaklines=true,
-    escapeinside={(*}{*)},
-    showstringspaces=false
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{myblue}\bfseries,
+	stringstyle=\color{strawberry!80},
+	commentstyle=\color{forest!85}\itshape,
+	numbers=none,
+	numberstyle=\tiny,
+	stepnumber=1,
+	numbersep=5pt,
+	frame=single,
+	breaklines=true,
+	escapeinside={(*}{*)},
+	showstringspaces=false
 }
 \usepackage{enumerate}
 \usepackage{fancyvrb}
@@ -119,14 +119,14 @@
 % math symbols
 \newcommand{\qed}{\hfill $\blacksquare$}
 \newcommand{\contradiction}{
-    {\raisebox{-0.1ex}{\scalebox{1.25}{\hbox{
-        \setbox0=\hbox{$\mkern-3mu{\times}\mkern-3mu$}
-        \setbox1=\hbox to0pt{\hss\copy0\hss}
-        \copy0\raisebox{0.5\wd0}{\copy1}\raisebox{-0.5\wd0}{\box1}\box0}}}}
+{\raisebox{-0.1ex}{\scalebox{1.25}{\hbox{
+\setbox0=\hbox{$\mkern-3mu{\times}\mkern-3mu$}
+\setbox1=\hbox to0pt{\hss\copy0\hss}
+\copy0\raisebox{0.5\wd0}{\copy1}\raisebox{-0.5\wd0}{\box1}\box0}}}}
 }
 
 % declare words in $math$ that look nice
-\DeclareMathOperator{\var}{Var} 
+\DeclareMathOperator{\var}{Var}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\argmax}{argmax}
 
@@ -143,7 +143,7 @@
 % use these to make the .pdf background darker or another color
 % look at docs for colors or make your own:
 % \definecolor{string name}{RGB}{int r,b,g in [0,255]}
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \definecolor{charcoal}{RGB}{1, 3, 2}
 \definecolor{paper}{RGB}{212, 212, 203}
 \definecolor{forest}{RGB}{6, 26, 2}
@@ -161,14 +161,14 @@
 \color{tinged} %% font
 
 \hypersetup{
-    colorlinks=true,
-    linkcolor=strawberry,
-    filecolor=strawberry, 
-    urlcolor=strawberry,
-    citecolor=strawberry,
-    urlbordercolor=strawberry,
-    linkbordercolor=strawberry,
-    citebordercolor=strawberry
+	colorlinks=true,
+	linkcolor=strawberry,
+	filecolor=strawberry,
+	urlcolor=strawberry,
+	citecolor=strawberry,
+	urlbordercolor=strawberry,
+	linkbordercolor=strawberry,
+	citebordercolor=strawberry
 }
 
 %%%% algoritms packages
@@ -191,41 +191,41 @@
 
 %\begin{algorithm}
 %\caption{Finding pairs $(i,j)$ such that $i \equiv j \mod x$}
-    %\begin{algorithmic}
-    %\Function{ModPairs}{\texttt{int[]} nums, \texttt{int} $x$}
-        %\State $n \gets length(nums)$
-        %\For{$i \gets 1, n-1$}
-            %\For{$j \gets i+1, n$}
-                %\If{$i \, \% \, j = x$}
-                    %\State \texttt{print}(``Indices (\{i\},\{j\}) with values nums[i], nums[j]")
-                %\EndIf
-            %\EndFor
-        %\EndFor
-    %\EndFunction
-    %\end{algorithmic}
+%\begin{algorithmic}
+%\Function{ModPairs}{\texttt{int[]} nums, \texttt{int} $x$}
+%\State $n \gets length(nums)$
+%\For{$i \gets 1, n-1$}
+%\For{$j \gets i+1, n$}
+%\If{$i \, \% \, j = x$}
+%\State \texttt{print}(``Indices (\{i\},\{j\}) with values nums[i], nums[j]")
+%\EndIf
+%\EndFor
+%\EndFor
+%\EndFunction
+%\end{algorithmic}
 %\end{algorithm}
 
 %\begin{algorithm}
 %\caption{Power Set $\cP\bp{\texttt{int[]}}$}
-    %\begin{algorithmic}[0]
-    %\Function{PowerSet}{$\texttt{int[]} T$}
-        %\State $\texttt{Queue<int[]>} \ q$\Comment{declare queue}
-        %\State $q.queue(\texttt{[]})$\Comment{start with $\emptyset$}
-        %\ForEach{$t \in T$}\Comment{$\forall \ t$, create new subsets by appending $t$ to all subsets}
-            %\While{$\texttt{true}$}\Comment{iterate through queue until $\emptyset$}
-                %\State \texttt{int[]} $subset \gets q.deqeue()$
-                %\State \texttt{int[]} $newSubset \gets subset.append(t)$\Comment{append $t$ to subset}
-                %\Statex
-                %\State $q.queue(newSubset)$\Comment{queue $[subset, t]$}
-                %\State $q.queue(subset)$\Comment{requeue $subset$ \textbf{after}}
-                %\If{$subset = \texttt{[]}$} 
-                    %\State \texttt{break}\Comment{stop at $\emptyset$}
-                %\EndIf
-            %\EndWhile
-        %\EndFor
-        %\State \textbf{return} $q$
-    %\EndFunction
-    %\end{algorithmic}
+%\begin{algorithmic}[0]
+%\Function{PowerSet}{$\texttt{int[]} T$}
+%\State $\texttt{Queue<int[]>} \ q$\Comment{declare queue}
+%\State $q.queue(\texttt{[]})$\Comment{start with $\emptyset$}
+%\ForEach{$t \in T$}\Comment{$\forall \ t$, create new subsets by appending $t$ to all subsets}
+%\While{$\texttt{true}$}\Comment{iterate through queue until $\emptyset$}
+%\State \texttt{int[]} $subset \gets q.deqeue()$
+%\State \texttt{int[]} $newSubset \gets subset.append(t)$\Comment{append $t$ to subset}
+%\Statex
+%\State $q.queue(newSubset)$\Comment{queue $[subset, t]$}
+%\State $q.queue(subset)$\Comment{requeue $subset$ \textbf{after}}
+%\If{$subset = \texttt{[]}$} 
+%\State \texttt{break}\Comment{stop at $\emptyset$}
+%\EndIf
+%\EndWhile
+%\EndFor
+%\State \textbf{return} $q$
+%\EndFunction
+%\end{algorithmic}
 %\end{algorithm}
 
 %% Figure example
